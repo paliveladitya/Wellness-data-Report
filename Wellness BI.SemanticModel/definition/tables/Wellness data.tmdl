@@ -1,0 +1,103 @@
+table 'Wellness data'
+	lineageTag: 9f0efbc2-c5e0-4a10-aadf-4afdf87d2191
+
+	column cityCode
+		dataType: int64
+		formatString: 0
+		lineageTag: 03ef0805-476c-4d1d-8bd4-eab9668dba89
+		summarizeBy: count
+		sourceColumn: cityCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column cityName
+		dataType: string
+		lineageTag: 6c2f1712-30dc-485e-b971-269f08c06db7
+		summarizeBy: none
+		sourceColumn: cityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column wellnessCentreCode
+		dataType: string
+		lineageTag: 3bb6330b-8fe2-4fed-a3b7-8cdab1bdc83a
+		summarizeBy: none
+		sourceColumn: wellnessCentreCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column wellnessCentreName
+		dataType: string
+		lineageTag: 3fcecb15-87f6-48b3-b193-097cd5259313
+		summarizeBy: none
+		sourceColumn: wellnessCentreName
+
+		annotation SummarizationSetBy = Automatic
+
+	column wellnessCentreAddress
+		dataType: string
+		lineageTag: 64f8038c-a356-438e-8d8c-edaae6e0e6b2
+		summarizeBy: none
+		sourceColumn: wellnessCentreAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column doctorCount
+		dataType: int64
+		formatString: 0
+		lineageTag: d133fe77-d90a-44ee-afeb-e89784e13ece
+		summarizeBy: sum
+		sourceColumn: doctorCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: ab4d1e19-380d-4f23-8456-663d5f7e341f
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column wellnessCentreContactNo
+		dataType: string
+		lineageTag: 323c3e74-6512-425e-93d8-68d8fbccec1e
+		summarizeBy: none
+		sourceColumn: wellnessCentreContactNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column longitude
+		dataType: double
+		lineageTag: a13b575a-4755-4381-b076-ffbea869a2fd
+		summarizeBy: sum
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column latitude
+		dataType: double
+		lineageTag: 46921b22-5b98-4f97-be80-b504afe4de69
+		summarizeBy: sum
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Wellness data' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Huebits BDE\Wellness data.csv"),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"cityCode", Int64.Type}, {"cityName", type text}, {"wellnessCentreCode", type text}, {"wellnessCentreName", type text}, {"wellnessCentreAddress", type text}, {"doctorCount", Int64.Type}, {"category", type text}, {"wellnessCentreContactNo", type text}, {"longitude", type number}, {"latitude", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

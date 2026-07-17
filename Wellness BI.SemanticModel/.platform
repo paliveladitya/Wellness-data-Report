@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Wellness BI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "96944744-e919-49d0-972e-6464575982eb"
+  }
+}

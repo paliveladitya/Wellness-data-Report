@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Wellness BI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "50c0397e-17a0-4f24-a530-3e44a3f009bb"
+  }
+}
