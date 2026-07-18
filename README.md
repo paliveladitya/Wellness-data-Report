@@ -1,4 +1,5 @@
-# 📊 Wellness Data Report
+<img width="1311" height="733" alt="Health wellness Dashboard" src="https://github.com/user-attachments/assets/6a2ba649-0576-4297-8a83-929e74ecf9ec" />
+# 📊 Healthcare Wellness Data Dashboard 
 
 > **A data analytics project focused on exploring wellness-related datasets to uncover meaningful insights, identify trends, and support data-driven decision-making through interactive reporting and visualization.**
 
